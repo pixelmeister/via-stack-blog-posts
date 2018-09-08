@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>IonicBasic</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="theme-color" content="#387ef5">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link href="https://unpkg.com/@ionic/core@4.0.0-beta.8/css/ionic.bundle.css" rel="stylesheet">
+	<script src="https://unpkg.com/@ionic/core@4.0.0-beta.8/dist/ionic.js"></script>
+	<script src="https://unpkg.com/ionicons@4.4.2/dist/ionicons.js"></script>
+</head>
+
+<body>
+	<ion-app>
+		<ion-header>
+			<ion-toolbar color='primary'>
+				<ion-title>Ionic HTML/JavaScript Demo</ion-title>
+			</ion-toolbar>
+		</ion-header>
+		<ion-content padding>
+			<p>This is the home page!</p>
+			<ion-nav-push id="navPush" component="app-about">
+				<ion-button class="next">Go to About</ion-button>
+			</ion-nav-push>
+		</ion-content>
+	</ion-app>
+</body>
+
+</html>
