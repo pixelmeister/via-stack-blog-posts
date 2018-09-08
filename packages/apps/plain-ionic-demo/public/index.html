@@ -15,20 +15,88 @@
 	<script src="https://unpkg.com/ionicons@4.4.2/dist/ionicons.js"></script>
 </head>
 
-<body>
+<body onload="loadFirstPage()">
 	<ion-app>
-		<ion-header>
-			<ion-toolbar color='primary'>
-				<ion-title>Ionic HTML/JavaScript Demo</ion-title>
-			</ion-toolbar>
-		</ion-header>
-		<ion-content padding>
-			<p>This is the home page!</p>
-			<ion-nav-push id="navPush" component="app-about">
-				<ion-button class="next">Go to About</ion-button>
-			</ion-nav-push>
-		</ion-content>
+		<ion-nav></ion-nav>
 	</ion-app>
 </body>
+<script>
+	class FirstPage extends HTMLElement {
+		async connectedCallback() {
+			this.innerHTML = `
+			  <ion-header translucent>
+				<ion-toolbar color='primary'>
+				  <ion-title>Page One</ion-title>
+				</ion-toolbar>
+			  </ion-header>
+			  <ion-content padding fullscreen>
+				<h1>Page One</h1>
+				<ion-nav-push component="page-two">
+				  <ion-button class="next">Go to Page Two</ion-button>
+				</ion-nav-push>
+			  </ion-content>
+			`;
+		}
+	}
+
+	class SecondPage extends HTMLElement {
+		async connectedCallback() {
+			this.innerHTML = `
+			  <ion-header translucent>
+				<ion-toolbar color='primary'>
+					<ion-buttons slot="start">
+						<ion-nav-pop>
+							<ion-back-button defaultHref="/"></ion-back-button>
+						</ion-nav-pop>
+					</ion-buttons>
+				  	<ion-title>Page Two</ion-title>
+				</ion-toolbar>
+			  </ion-header>
+			  <ion-content padding fullscreen>
+				<h1>Page Two</h1>
+				<ion-nav-push component="page-three">
+				  <ion-button class="next">Go to Page Three</ion-button>
+				</ion-nav-push>
+				<ion-nav-pop>
+				  <ion-button class="back">Go Back</ion-button>
+				</ion-nav-pop>
+			  </ion-content>
+			`;
+		}
+	}
+
+	class ThirdPage extends HTMLElement {
+		async connectedCallback() {
+			this.innerHTML = `
+			  <ion-header translucent>
+				<ion-toolbar color='primary'>
+					<ion-buttons slot="start">
+					<ion-nav-pop>
+						<ion-back-button defaultHref="/"></ion-back-button>
+					</ion-nav-pop>
+					</ion-buttons>
+				  <ion-title>Page Three</ion-title>
+				</ion-toolbar>
+			  </ion-header>
+			  <ion-content padding fullscreen>
+				<h1>Page Three</h1>
+				<ion-nav-pop>
+				  <ion-button class="back">Go Back</ion-button>
+				</ion-nav-pop>
+			  </ion-content>
+			`;
+		}
+	}
+
+	customElements.define('page-one', FirstPage);
+	customElements.define('page-two', SecondPage);
+	customElements.define('page-three', ThirdPage);
+
+	async function loadFirstPage() {
+		const nav = document.querySelector('ion-nav');
+		await nav.componentOnReady();
+		await nav.setRoot('page-one');
+	}
+</script>
 
 </html>
