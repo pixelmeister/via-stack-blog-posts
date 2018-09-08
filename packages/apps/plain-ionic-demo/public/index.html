@@ -21,9 +21,11 @@
 	</ion-app>
 </body>
 <script>
+	// Use this vscode extension to see syntax highlighted html in the strings below: https://marketplace.visualstudio.com/items?itemName=hjb2012.vscode-es6-string-html
+
 	class FirstPage extends HTMLElement {
 		async connectedCallback() {
-			this.innerHTML = `
+			this.innerHTML = /*html*/`
 			  <ion-header translucent>
 				<ion-toolbar color='primary'>
 				  <ion-title>Page One</ion-title>
@@ -41,7 +43,7 @@
 
 	class SecondPage extends HTMLElement {
 		async connectedCallback() {
-			this.innerHTML = `
+			this.innerHTML = /*html*/`
 			  <ion-header translucent>
 				<ion-toolbar color='primary'>
 					<ion-buttons slot="start">
@@ -67,7 +69,7 @@
 
 	class ThirdPage extends HTMLElement {
 		async connectedCallback() {
-			this.innerHTML = `
+			this.innerHTML = /*html*/`
 			  <ion-header translucent>
 				<ion-toolbar color='primary'>
 					<ion-buttons slot="start">
